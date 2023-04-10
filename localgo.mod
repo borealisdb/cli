@@ -2,11 +2,13 @@ module github.com/borealisdb/cli
 
 go 1.18
 
+replace github.com/borealisdb/commons => ../commons
+
 replace github.com/borealisdb/go-sdk => ../go-sdk
 
 require (
 	github.com/anthhub/forwarder v1.1.0
-	github.com/borealisdb/commons v0.0.2
+	github.com/borealisdb/commons v0.0.0-00010101000000-000000000000
 	github.com/borealisdb/go-sdk v0.0.0-00010101000000-000000000000
 	github.com/gin-gonic/gin v1.8.1
 	github.com/sirupsen/logrus v1.9.0

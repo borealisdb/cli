@@ -17,3 +17,4 @@
 bin/
 test-manifests
 borealis
+dist/
