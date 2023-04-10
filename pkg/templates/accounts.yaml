@@ -1,0 +1,10 @@
+apiVersion: borealisdb.io/v1
+kind: BorealisClusterAccount
+metadata:
+  name: {{.ClusterName}}-accounts
+  labels:
+    clusterName: {{.ClusterName}}
+spec:
+  accounts:
+    - email: "" # youremail@company.com
+      role: admin

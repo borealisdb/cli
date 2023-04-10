@@ -1,0 +1,12 @@
+apiVersion: "borealisdb.io/v1"
+kind: Postgresql
+metadata:
+  name: {{.ClusterName}}
+spec:
+  maxAllocatedStorage: 1Gi
+  numberOfInstances: 2
+  authentication:
+    host: {{.Host}} # Here it goes your host ex: https://mycompany.io
+    rootUrlPath: {{.RootUrlPath}} # This is the same as rootUrlPath in infrastructures configuration
+  databases: []
+  engineVersion: "14"
