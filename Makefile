@@ -37,6 +37,6 @@ run.cluster.connect:
 precommit: bind
 
 release:
-	git tag $(shell svu next)
+	git tag $$(svu --tag-mode all-branches next)
 	git push --tags
 	goreleaser release --clean
