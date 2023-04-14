@@ -1,7 +1,3 @@
 host: {{.Host}} # Put your host here (Required) https://mycompany.com
 rootUrlPath: {{.RootUrlPath}} # Sub path, so it won't conflict with your other ingress routes /borealis
-imageName: borealis/console
-imageVersion: latest
 secretName: borealis-secrets # Name of the secrets that belongs to the infrastructures
-authenticationStrategy: oauth2 # For the time being oauth2 is the only supported
-logLevel: info

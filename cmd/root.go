@@ -24,6 +24,7 @@ const (
 	FlagHost               = "host"
 	FlagRootPathUrl        = "root-path-url"
 	FlagClusterName        = "cluster-name"
+	FlagChartUrl           = "chart"
 )
 
 var log *logrus.Entry
@@ -38,6 +39,7 @@ var host string
 var rootPathUrl string
 var clusterName string
 var environment string
+var chartUrl string
 var sdk api.API
 
 // rootCmd represents the base command when called without any subcommands

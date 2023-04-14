@@ -20,6 +20,16 @@ var deployCmd = &cobra.Command{
 		}
 		log.Infof(string(secretOutput))
 
+		helmRepoUpdateOutput, err := exec.Command(
+			"helm",
+			"repo",
+			"update",
+		).CombinedOutput()
+		if err != nil {
+			cobra.CheckErr(fmt.Sprint(err) + ": " + string(helmRepoUpdateOutput))
+		}
+		log.Infof(string(helmRepoUpdateOutput))
+
 		valuesFilePath := filepath.Join(projectFolder, environment, "infrastructures/values.yaml")
 		helmOutput, err := exec.Command(
 			"helm",
@@ -42,4 +52,5 @@ var deployCmd = &cobra.Command{
 
 func init() {
 	rootCmd.AddCommand(deployCmd)
+	deployCmd.PersistentFlags().StringVar(&chartUrl, FlagChartUrl, config.HelmChartUrl, "")
 }

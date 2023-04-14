@@ -25,8 +25,9 @@ const (
 	SsoStartUrlKey         = "sso_start_url"
 	HostKey                = "host"
 	RootUrlPathKey         = "root_url_path"
-	HelmChartUrl           = "../charts/borealis" // TODO change this once chart is hosted
-	HelmReleaseName        = "borealis"
+	HelmChartUrl           = "https://borealisdb.github.io/charts"
+	HelmReleaseName        = "borealisdb"
+	HelmChartName          = HelmReleaseName
 )
 
 var CliConfigDefaultPath string
