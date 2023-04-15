@@ -9,15 +9,10 @@ import (
 	"text/template"
 )
 
-type Kubernetes struct {
-	DisableKubeval bool
-}
-
 type ClITemplate struct {
 	ProjectFolder string
 	Host          string
 	RootUrlPath   string
-	Kubernetes    Kubernetes
 }
 
 type Credentials struct {
@@ -58,7 +53,6 @@ func (k *CliConfig) generateDefaultCliConfig() error {
 		ProjectFolder: k.Params.ProjectFolder,
 		RootUrlPath:   k.Params.RootPathUrl,
 		Host:          k.Params.Host,
-		Kubernetes:    Kubernetes{DisableKubeval: true},
 	}
 	templateFileSource := fmt.Sprintf("%v/%v", TemplatesPath, CliTemplateFilename)
 	fileDestination := fmt.Sprintf("%v/%v", CliConfigDefaultPath, CliConfigFilename)

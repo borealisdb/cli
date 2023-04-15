@@ -10,7 +10,7 @@ clean:
 	rm -rf ${HOME}/.borealis/ || true
 	rm -r ./borealis* || true
 
-run.help:
+run.help: bind
 	go run -modfile=localgo.mod main.go --help
 
 run.init: clean bind

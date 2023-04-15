@@ -30,6 +30,8 @@ const (
 	HelmChartName          = HelmReleaseName
 )
 
+var HelmChartReference = HelmChartName + "/borealis"
+
 var CliConfigDefaultPath string
 
 func init() {

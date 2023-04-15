@@ -53,4 +53,6 @@ var initCmd = &cobra.Command{
 func init() {
 	rootCmd.AddCommand(initCmd)
 	initCmd.PersistentFlags().StringVar(&chartUrl, FlagChartUrl, config.HelmChartUrl, "")
+	initCmd.PersistentFlags().StringVar(&host, FlagHost, "", "")
+	initCmd.MarkPersistentFlagRequired(FlagHost)
 }
