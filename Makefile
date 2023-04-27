@@ -36,7 +36,18 @@ run.cluster.connect:
 
 precommit: bind
 
-release:
-	git tag $$(svu --tag-mode all-branches next)
+check.github.token:
+ifndef GITHUB_TOKEN
+	$(error GITHUB_TOKEN is undefined)
+endif
+
+release: export TAG=$(shell svu --tag-mode all-branches next)
+release: check.github.token
+	git tag $(TAG)
 	git push --tags
 	goreleaser release --clean
+
+release.test: export TAG=$(shell svu --tag-mode all-branches next)
+release.test:
+	echo Next version: $(TAG)
+	goreleaser build --snapshot --clean

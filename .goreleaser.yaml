@@ -11,6 +11,8 @@ builds:
       - windows
       - darwin
     binary: borealisdb
+    ldflags:
+      - -X 'github.com/borealisdb/cli/cmd.Version={{.Env.TAG}}'
 
 archives:
   - format: tar.gz
