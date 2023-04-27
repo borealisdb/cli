@@ -41,12 +41,17 @@ var clusterName string
 var environment string
 var chartUrl string
 var sdk api.API
+var Version = "0.0.1"
 
 // rootCmd represents the base command when called without any subcommands
 var rootCmd = &cobra.Command{
-	Use:   "borealis",
-	Short: "Borealis CLI",
-	Long:  ``,
+	Use:     "borealisdb",
+	Short:   "Borealis CLI",
+	Version: Version,
+	Long:    `Official CLI for Borealisdb https://github.com/borealisdb`,
+	Run: func(cmd *cobra.Command, args []string) {
+		cmd.Printf("Borealis CLI: %s", Version)
+	},
 	// Validation and flags cleanup
 	// TODO add flags validation here
 	PersistentPreRunE: func(cmd *cobra.Command, args []string) error {

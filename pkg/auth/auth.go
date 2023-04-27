@@ -25,12 +25,10 @@ func (a *Auth) TokenListener() {
 	quit := make(chan int)
 	r := gin.New()
 	r.Use(gin.Recovery())
-	_, err := templates.Asset(filepath.Join(config.TemplatesPath, "index.html"))
+	asset, err := templates.Asset(filepath.Join(config.TemplatesPath, "index.html"))
 	if err != nil {
 		a.Log.Fatal("could not load html template from pkg/templates/index.html")
 	}
-
-	r.LoadHTMLFiles(filepath.Join(config.TemplatesPath, "index.html"))
 
 	r.GET("/token", func(c *gin.Context) {
 		defer func() {
@@ -40,7 +38,7 @@ func (a *Auth) TokenListener() {
 		if err := a.CliConfig.SetToken(idToken); err != nil {
 			a.Log.Errorf("could not save token: %v", err)
 		}
-		c.HTML(200, "index.html", gin.H{})
+		c.Data(http.StatusOK, "text/html", asset)
 	})
 
 	srv := &http.Server{

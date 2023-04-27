@@ -240,7 +240,7 @@ func pkgTemplatesTemplates_bindGo() (*asset, error) {
 		return nil, err
 	}
 
-	info := bindataFileInfo{name: "pkg/templates/templates_bind.go", size: 20480, mode: os.FileMode(420), modTime: time.Unix(1681542763, 0)}
+	info := bindataFileInfo{name: "pkg/templates/templates_bind.go", size: 20480, mode: os.FileMode(420), modTime: time.Unix(1682444009, 0)}
 	a := &asset{bytes: bytes, info: info}
 	return a, nil
 }

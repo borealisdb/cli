@@ -41,7 +41,7 @@ var deployCmd = &cobra.Command{
 			"--namespace",
 			namespace,
 			config.HelmReleaseName,
-			config.HelmChartReference,
+			config.GetHelmChartReference(chartUrl),
 		).CombinedOutput()
 		if err != nil {
 			cobra.CheckErr(fmt.Sprint(err) + ": " + string(helmOutput))
