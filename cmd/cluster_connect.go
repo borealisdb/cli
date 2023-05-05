@@ -25,7 +25,7 @@ const (
 var (
 	datname    string
 	certPath   string
-	username   string
+	userRole   string
 	kubeconfig string
 	role       string
 )
@@ -82,7 +82,7 @@ var clusterConnectCmd = &cobra.Command{
 
 		command := exec.Command(
 			"psql",
-			fmt.Sprintf("sslmode=verify-ca sslrootcert=%v host=localhost user=%v port=5432 dbname=%v", certPath, username, datname),
+			fmt.Sprintf("sslmode=verify-ca sslrootcert=%v host=localhost user=%v port=5432 dbname=%v", certPath, userRole, datname),
 		)
 		command.Env = os.Environ()
 		command.Env = append(command.Env, fmt.Sprintf("PGPASSWORD=%v", token.AccessToken))
@@ -149,7 +149,7 @@ func init() {
 	clusterConnectCmd.PersistentFlags().StringVar(&clusterName, "cluster-name", "", "")
 	clusterConnectCmd.PersistentFlags().StringVar(&namespace, "namespace", DefaultNamespace, "")
 	clusterConnectCmd.PersistentFlags().StringVar(&datname, "db", "postgres", "")
-	clusterConnectCmd.PersistentFlags().StringVar(&username, "username", "", "")
+	clusterConnectCmd.PersistentFlags().StringVar(&userRole, "userrole", "", "")
 	clusterConnectCmd.PersistentFlags().StringVar(&certPath, "cert-path", filepath.Join(config.CliConfigDefaultPath, constants.RootCaCertName), "")
 	clusterConnectCmd.PersistentFlags().StringVar(&kubeconfig, "kubeconfig", filepath.Join(homedir.HomeDir(), ".kube", "config"), "")
 	clusterConnectCmd.PersistentFlags().StringVar(&role, "role", "master", "")

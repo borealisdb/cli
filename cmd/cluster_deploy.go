@@ -1,9 +1,7 @@
 package cmd
 
 import (
-	"fmt"
 	"github.com/spf13/cobra"
-	"os/exec"
 	"path/filepath"
 )
 
@@ -13,11 +11,12 @@ var clusterDeployCmd = &cobra.Command{
 	Short: "Deploy a cluster",
 	Long:  ``,
 	Run: func(cmd *cobra.Command, args []string) {
-		output, err := exec.Command("kubectl", "apply", "-f", filepath.Join(projectFolder, environment, clusterName)).CombinedOutput()
-		if err != nil {
-			cobra.CheckErr(fmt.Sprint(err) + ": " + string(output))
-		}
-		log.Infof(string(output))
+		RunCommandOrDie(
+			"kubectl",
+			"apply",
+			"-f",
+			filepath.Join(projectFolder, environment, clusterName),
+		)
 	},
 }
 

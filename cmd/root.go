@@ -3,8 +3,8 @@ package cmd
 import (
 	"fmt"
 	"github.com/borealisdb/cli/pkg/config"
-	"github.com/borealisdb/cli/pkg/logger"
 	"github.com/borealisdb/cli/pkg/utils"
+	"github.com/borealisdb/commons/logger"
 	"github.com/borealisdb/go-sdk/api"
 	"github.com/sirupsen/logrus"
 	"os"
@@ -82,7 +82,7 @@ func init() {
 }
 
 func initConfig() {
-	log = logger.New(logLevel)
+	log = logger.NewDefaultLogger(logLevel, "borealisdb-cli")
 	log.Debugf("reading config...")
 	viper.SetConfigName(config.CliConfigFilename)
 	viper.AddConfigPath(config.CliConfigDefaultPath)

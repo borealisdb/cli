@@ -30,14 +30,6 @@ const (
 	HelmChartName          = HelmReleaseName
 )
 
-func GetHelmChartReference(chartUrl string) string {
-	if chartUrl != "" {
-		return chartUrl
-	}
-
-	return HelmChartName + "/borealis"
-}
-
 var CliConfigDefaultPath string
 
 func init() {
